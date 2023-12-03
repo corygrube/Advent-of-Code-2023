@@ -1,5 +1,9 @@
+import os.path
+	
 def get_input(path): 
-	"""Open input text file, return as list of lines (strings)"""
+	"""Open input text file (if exists), return as list of strings per line"""
+	if not os.path.isfile(path):
+		return None
 	with open(path) as file:
 		return file.readlines()
 
@@ -114,23 +118,24 @@ def solution_2(input_):
 
 # main
 DAY = 1
+
 # get input files
 sample_1_input = get_input("sample_1.txt")
 sample_2_input = get_input("sample_2.txt")
 real_input = get_input("input.txt")
 
 # solution 1, sample
-sample_solution_1 = solution_1(sample_1_input)
-print("Day {} - Sample solution 1: {}".format(DAY, sample_solution_1))
+if sample_1_input:
+	print("Day {} - Sample solution 1: {}".format(DAY, solution_1(sample_1_input)))
 
 # solution 1, real
-real_solution_1 = solution_1(real_input)
-print("Day {} - Real solution 1: {}".format(DAY, real_solution_1))
+if real_input:
+	print("Day {} - Real solution 1: {}".format(DAY, solution_1(real_input)))
 
 # solution 2, sample
-sample_solution_2 = solution_2(sample_2_input)
-print("Day {} - Sample solution 2: {}".format(DAY, sample_solution_2))
+if sample_2_input:
+	print("Day {} - Sample solution 2: {}".format(DAY, solution_2(sample_2_input)))
 
 # solution 2, real
-real_solution_2 = solution_2(real_input)
-print("Day {} - Real solution 2: {}".format(DAY, real_solution_2))
+if real_input:
+	print("Day {} - Real solution 2: {}".format(DAY, solution_2(real_input)))
